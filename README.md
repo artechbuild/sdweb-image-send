@@ -44,7 +44,7 @@
 
 サーバは POST /api/item/addFromURL （デフォルト）を受け取り、画像を保存
 
-🌐 サーバ側の期待仕様
+## 🌐 サーバ側の期待仕様
 
 ```text
 ・メソッド: POST
@@ -63,7 +63,7 @@ name: ファイル名（拡張子なし）
 folderId: フォルダ識別子
 ```
 
-🛠️ 動作確認コマンド（サーバテスト用）
+## 🛠️ 動作確認コマンド（サーバテスト用）
 
 ```text
 curl -X POST "https://example.com:8443/api/item/addFromURL" \
@@ -76,7 +76,7 @@ curl -X POST "https://example.com:8443/api/item/addFromURL" \
   }'
 ```
 
-✅ 利用手順まとめ
+## ✅ 利用手順まとめ
 
 1. extensions/ に sdweb-image-send を配置
 2. WebUIを再起動
@@ -89,13 +89,13 @@ curl -X POST "https://example.com:8443/api/item/addFromURL" \
 
 4. 画像を生成すると自動送信されます
 
-🔒 セキュリティ注意点
+## 🔒 セキュリティ注意点
 
 - 公開APIの場合は Auth Token必須 を推奨
 - HTTPSを利用してください
 - サーバ側では name・folderId の検証を行い、不正入力を防ぐこと
 
-🐞 トラブルシューティング
+## 🐞 トラブルシューティング
 
 - 送信されない
   - Send all images がONか確認
@@ -108,7 +108,7 @@ curl -X POST "https://example.com:8443/api/item/addFromURL" \
 - デバッグ出力
    - ソース冒頭の DEBUG = False を True に変更するとログが出力されます
 
-❓ FAQ
+## ❓ FAQ
 
 Q. 生成が遅くなりますか？  
 → いいえ。送信処理はスレッドで非同期実行されます。
@@ -117,7 +117,7 @@ Q. APIパスは固定ですか？
 → 設定画面の「API path」で自由に変更できます。
 
 
-📝 更新履歴
+## 📝 更新履歴
 
 v1.0.0: 初版リリース      
  – 非同期送信、リトライ・タイムアウト対応、設定画面から切替可能
