@@ -46,7 +46,7 @@ def on_ui_settings():
     )
     shared.opts.add_option(
         "msforum_add_from_url_path",
-        shared.OptionInfo("/api/item/addFromURL", "API path (e.g. /api)", section=section)
+        shared.OptionInfo("/api", "API path (e.g. /api)", section=section)
     )
 
 script_callbacks.on_ui_settings(on_ui_settings)
