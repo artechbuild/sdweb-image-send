@@ -40,6 +40,7 @@
   "name": "test-image",
   "folderId": "album001"
 }
+```
 
 サーバは POST /api/item/addFromURL （デフォルト）を受け取り、画像を保存
 
