@@ -46,26 +46,26 @@
 
 🌐 サーバ側の期待仕様
 
-メソッド: POST
+```text
+・メソッド: POST
 
-パス: ${BASE_URL}${API_PATH} （例: https://example.com:8443/api/item/addFromURL）
+・パス: ${BASE_URL}${API_PATH} （例: https://example.com:8443/api/item/addFromURL）
 
-ヘッダ:
+・ヘッダ:
 
 Content-Type: application/json
-
 X-Auth-Token（設定した場合のみ）
 
-ボディ(JSON):
+・ボディ(JSON):
 
 url: data URL文字列
-
 name: ファイル名（拡張子なし）
-
 folderId: フォルダ識別子
+```
 
 🛠️ 動作確認コマンド（サーバテスト用）
 
+```text
 curl -X POST "https://example.com:8443/api/item/addFromURL" \
   -H "Content-Type: application/json" \
   -H "X-Auth-Token: my-secret" \
@@ -74,49 +74,51 @@ curl -X POST "https://example.com:8443/api/item/addFromURL" \
     "name": "test-image",
     "folderId": "album001"
   }'
+```
 
 ✅ 利用手順まとめ
 
-1.extensions/ に sdweb-image-send を配置
-2.WebUIを再起動
-3.Settings → Image Send Info を開いて設定
-    ・Send all images → ON
-    ・Outside server base URL → 例: https://example.com:8443
-    ・API path → /api/item/addFromURL
-    ・FolderID → album001
-    ・必要に応じて Auth Token, Timeout, Retries を設定
+1. extensions/ に sdweb-image-send を配置
+2. WebUIを再起動
+3. Settings → Image Send Info を開いて設定
+- Send all images → ON
+- Outside server base URL → 例: https://example.com:8443
+- API path → /api/item/addFromURL
+- FolderID → album001
+- 必要に応じて Auth Token, Timeout, Retries を設定
 
-4.画像を生成すると自動送信されます
+4. 画像を生成すると自動送信されます
 
 🔒 セキュリティ注意点
 
-・公開APIの場合は Auth Token必須 を推奨
-・HTTPSを利用してください
-・サーバ側では name・folderId の検証を行い、不正入力を防ぐこと
+- 公開APIの場合は Auth Token必須 を推奨
+- HTTPSを利用してください
+- サーバ側では name・folderId の検証を行い、不正入力を防ぐこと
 
 🐞 トラブルシューティング
 
-・送信されない
-    ・Send all images がONか確認
-    ・Base URLとAPI Pathが正しいか確認
-    ・FolderIDが空でないか確認
+- 送信されない
+  - Send all images がONか確認
+  - Base URLとAPI Pathが正しいか確認
+  - FolderIDが空でないか確認
 
-・タイムアウト/5xx
-    ・Timeout秒数やRetriesを増やす
-    ・サーバ側のログを確認
-・デバッグ出力
-    ・ソース冒頭の DEBUG = False を True に変更するとログが出力されます
+- タイムアウト/5xx
+  - Timeout秒数やRetriesを増やす
+  - サーバ側のログを確認
+- デバッグ出力
+   - ソース冒頭の DEBUG = False を True に変更するとログが出力されます
 
 ❓ FAQ
 
-Q. 生成が遅くなりますか？
+Q. 生成が遅くなりますか？  
 → いいえ。送信処理はスレッドで非同期実行されます。
 
-Q. APIパスは固定ですか？
+Q. APIパスは固定ですか？  
 → 設定画面の「API path」で自由に変更できます。
 
 
 📝 更新履歴
 
-v1.0.0: 初版リリース – 非同期送信、リトライ・タイムアウト対応、設定画面から切替可能
+v1.0.0: 初版リリース      
+ – 非同期送信、リトライ・タイムアウト対応、設定画面から切替可能
 
